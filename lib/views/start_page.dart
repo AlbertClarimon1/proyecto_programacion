@@ -16,18 +16,34 @@ class StartPage extends State<FirstScreen>{
 
   void login(){
     setState(() {
-      Navigator.pushNamed(context, '/second');
+      Navigator.pushNamed(context, '/login');
     });
 
   }
 
   void crearCuenta(){
-        (context) => const FirstScreen();
+    setState(() {
+      Navigator.pushNamed(context, '/register');
+    });
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+    /*bottomNavigationBar: BottomAppBar(
+      child: Container(
+        width: 100,
+        child: Text(
+          "Hola",
+          style: TextStyle(
+              fontSize: 10,
+              fontWeight: FontWeight.w500),
+        ),
+      ),
+
+
+
+      ),*/
       backgroundColor: Colors.white,
       body: SafeArea(
         child: Container(

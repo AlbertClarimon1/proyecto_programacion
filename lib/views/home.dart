@@ -75,13 +75,14 @@ class HomePage extends State<Home>{
                             ),
                           ),
                         ),
-                      )
+                      ),
                     ],
                   ),
                 ),
               ]
           ),
         ),
+
       ),
     );
   }

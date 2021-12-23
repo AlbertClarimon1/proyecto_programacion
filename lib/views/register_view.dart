@@ -2,16 +2,20 @@ import 'package:flutter/material.dart';
 import 'package:whatchlist/widget/simpleButton.dart';
 
 
-class LoginView extends StatefulWidget {
+class RegisterView extends StatefulWidget {
 
-  const LoginView({Key? key}) : super(key: key);
-  State<LoginView> createState() => Login();
+  const RegisterView({Key? key}) : super(key: key);
+  State<RegisterView> createState() => Register();
 //HomePage createState()=> HomePage();
 }
 
-class Login extends State<LoginView>  {
+class Register extends State<RegisterView>  {
   TextEditingController nameController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
+  TextEditingController repitpasswordController = TextEditingController();
+  bool accept = false;
+  bool age = false;
+  Color colorbox = Colors.black;
 
   void facebook(){
     setState(() {
@@ -22,15 +26,22 @@ class Login extends State<LoginView>  {
 
   void google(){
     setState(() {
-     // Navigator.pushNamed(context, '/');
+      // Navigator.pushNamed(context, '/');
     });
 
   }
 
   void home(){
-    setState(() {
-      Navigator.pushNamed(context, '/home');
-    });
+    if (accept){
+      setState(() {
+        Navigator.pushNamed(context, '/home');
+      });
+    }else{
+      setState(() {
+        colorbox = Colors.red;
+      });
+
+    }
 
   }
 
@@ -64,8 +75,8 @@ class Login extends State<LoginView>  {
 
           //alignment: Alignment.topCenter,
           child: ListView(
-              //crossAxisAlignment: CrossAxisAlignment.end,
-              //mainAxisAlignment: MainAxisAlignment.start,
+            //crossAxisAlignment: CrossAxisAlignment.end,
+            //mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 Container(
                   height: (MediaQuery.of(context).size.height+22)/1.1,
@@ -74,18 +85,18 @@ class Login extends State<LoginView>  {
                     //overflow: Overflow.visible,
                     children: [
                       Image.asset(
-                        'assets/login_image.png',
+                        'assets/register.png',
                         width: (MediaQuery.of(context).size.width),
                         //fit: BoxFit.contain,
                       ),
                       // SizedBox(height: 0),
                       Positioned(
-                        bottom: (MediaQuery.of(context).size.width)-(MediaQuery.of(context).size.height-(MediaQuery.of(context).size.width+100)),
+                        bottom: (MediaQuery.of(context).size.width)-(MediaQuery.of(context).size.height-(MediaQuery.of(context).size.width+20)),
                         left: (MediaQuery.of(context).size.width)/16,
                         right: (MediaQuery.of(context).size.width)/16,
                         child:Container(
                           width: (MediaQuery.of(context).size.width),
-                          height: (MediaQuery.of(context).size.height-(MediaQuery.of(context).size.width)),
+                          height: (MediaQuery.of(context).size.height-(MediaQuery.of(context).size.width)+100),
                           child: Container(
                             decoration: BoxDecoration(
                               color: Colors.white,
@@ -102,11 +113,11 @@ class Login extends State<LoginView>  {
 
                             child: Column(
                               children: [
-                                SizedBox(height: 20),
+                                SizedBox(height: 15),
                                 SimpleButtom(title: "Continuar con facebook", width: 1.3, height: 10, onTap: facebook, color: Colors.white, textSize: 15, borderColor: Colors.black, borderwidth: 1),
                                 SizedBox(height: 5),
                                 SimpleButtom(title: "Continuar con google", width: 1.3, height: 10, onTap: google, color: Colors.white, textSize: 15, borderColor: Colors.black, borderwidth: 1),
-                                SizedBox(height: 25),
+                                SizedBox(height: 17),
                                 Text(
                                   "o",
                                   style: TextStyle(
@@ -114,11 +125,68 @@ class Login extends State<LoginView>  {
                                       fontSize: 15,
                                       fontWeight: FontWeight.w500),
                                 ),
-                                SizedBox(height: 25),
-                                _TextLabel("Pon tu nombre", 1.0, nameController),
-                                SizedBox(height: 15),
-                                _TextLabel("Pon tu Email", 1.0,passwordController ),
-                                SizedBox(height: 25),
+                                SizedBox(height: 17),
+                                _TextLabel("Pon tu email", 1.0, nameController),
+                                SizedBox(height: 10),
+                                _TextLabel("Pon tu contraseña", 1.0,passwordController ),
+                                SizedBox(height: 10),
+                                _TextLabel("Repite tu contraseña", 1.0,repitpasswordController ),
+                                SizedBox(height: 10),
+                                Row(
+                                  children: [
+                                    SizedBox(width: 40),
+                                    Theme(
+                                        data: ThemeData(unselectedWidgetColor: colorbox),
+                                        child: Checkbox(
+                                          value: accept,
+
+                                          activeColor: Color.fromRGBO(255, 199, 0, 1),
+                                          onChanged: (bool? value){
+                                            setState(() {
+                                              accept = value!;
+                                            });
+                                          }
+                                      ),
+                                    ),
+
+
+                                    Text(
+                                      "Accepto las políticas de privacidad",
+                                      style: TextStyle(
+                                        fontSize: 13,
+                                      ),
+
+                                    ),
+                                  ],
+                                ),
+                                SizedBox(width: 10),
+                                Row(
+                                  children: [
+                                    SizedBox(width: 40),
+                                    Theme(
+                                      data: ThemeData(unselectedWidgetColor: Colors.black),
+                                      child: Checkbox(
+                                          value: age,
+
+                                          activeColor: Color.fromRGBO(255, 199, 0, 1),
+                                          onChanged: (bool? value){
+                                            setState(() {
+                                              age = value!;
+                                            });
+                                          }
+                                      ),
+                                    ),
+
+                                    Text(
+                                      "Soy mayor de 18 años",
+                                      style: TextStyle(
+                                        fontSize: 13,
+                                      ),
+
+                                    ),
+                                  ],
+                                ),
+                                SizedBox(height: 10),
                                 SimpleButtom(title: "Continuar", width: 1.3, height: 10, onTap: home, color: Color.fromRGBO(255, 199, 0 , 1), textSize: 15, borderColor: Colors.black, borderwidth: 0),
                                 /*Container(
                                   width: (MediaQuery.of(context).size.width)/1.3,
@@ -150,5 +218,3 @@ class Login extends State<LoginView>  {
     );
   }
 }
-
-
