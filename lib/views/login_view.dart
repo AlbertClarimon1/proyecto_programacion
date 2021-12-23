@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:whatchlist/widget/simpleButton.dart';
 
 
 class LoginView extends StatefulWidget {
@@ -9,7 +10,7 @@ class LoginView extends StatefulWidget {
 }
 
 class Login extends State<LoginView>  {
-
+  TextEditingController nameController = TextEditingController();
   void login(){
     setState(() {
       Navigator.pushNamed(context, '/');
@@ -22,41 +23,6 @@ class Login extends State<LoginView>  {
        // (context) => const FirstScreen();
   }
 
-  @override
-  _buttomIcon(String title, double width, double height, Function() onTap, Color color, double textSize, {IconData? iconData}){
-    return Container(
-
-      width: (MediaQuery.of(context).size.width)/width,
-      height: (MediaQuery.of(context).size.width)/height,
-      child: RaisedButton(
-        child: Row(
-          children: [
-            /*CircleAvatar(
-              maxRadius: 20,
-              child: Icon(iconData, color: Colors.black,),
-              backgroundColor: Colors.white,
-            ),*/
-
-
-            SizedBox(width: 20),
-            Text(
-              title,
-              style: TextStyle(
-                  color: Colors.black,
-                  fontSize: textSize,
-                  fontWeight: FontWeight.w500),
-            ),
-          ],
-        ),
-        onPressed: onTap,
-        color: color,
-        splashColor: color.withOpacity(0),
-        shape:  RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(20)
-        ),
-      ),
-    );
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -66,7 +32,9 @@ class Login extends State<LoginView>  {
         child: Container(
 
           //alignment: Alignment.topCenter,
-          child: Column(
+          child: ListView(
+              //crossAxisAlignment: CrossAxisAlignment.end,
+              //mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 Container(
                   height: (MediaQuery.of(context).size.height)/1.5,
@@ -81,12 +49,12 @@ class Login extends State<LoginView>  {
                       ),
                       // SizedBox(height: 0),
                       Positioned(
-                        bottom: (MediaQuery.of(context).size.width)/1.4-(MediaQuery.of(context).size.height-(MediaQuery.of(context).size.width+100)),
+                        bottom: (MediaQuery.of(context).size.width)/2.2-(MediaQuery.of(context).size.height-(MediaQuery.of(context).size.width+100)),
                         left: (MediaQuery.of(context).size.width)/16,
                         right: (MediaQuery.of(context).size.width)/16,
                         child:Container(
                           width: (MediaQuery.of(context).size.width),
-                          height: (MediaQuery.of(context).size.height-(MediaQuery.of(context).size.width+100)),
+                          height: (MediaQuery.of(context).size.height-(MediaQuery.of(context).size.width)),
                           child: Container(
                             decoration: BoxDecoration(
                               color: Colors.white,
@@ -104,9 +72,46 @@ class Login extends State<LoginView>  {
                             child: Column(
                               children: [
                                 SizedBox(height: 20),
-                                _buttomIcon("Iniciar sesión", 1.3, 5,login, Color.fromRGBO(169, 169, 169, 1), 20, iconData: Icons.person),
-                                SizedBox(height: 20),
-                                _buttomIcon("Crear una cuenta", 1.3, 3, crearCuenta, Color.fromRGBO(169, 169, 169, 1), 20, iconData: Icons.person),
+                                SimpleButtom(title: "Continuar con facebook", width: 1.3, height: 10, onTap: login, color: Colors.white, textSize: 15, borderColor: Colors.black),
+                                SizedBox(height: 5),
+                                SimpleButtom(title: "Continuar con google", width: 1.3, height: 10, onTap: login, color: Colors.white, textSize: 15, borderColor: Colors.black),
+                                SizedBox(height: 25),
+                                Text(
+                                  "o",
+                                  style: TextStyle(
+                                      color: Colors.black,
+                                      fontSize: 15,
+                                      fontWeight: FontWeight.w500),
+                                ),
+                                SizedBox(height: 25),
+                                Container(
+                                  width: (MediaQuery.of(context).size.width)/1.3,
+                                  height: (MediaQuery.of(context).size.width)/10,
+                                  child:TextField(
+                                    controller: nameController,
+                                    decoration: InputDecoration(
+                                      border: OutlineInputBorder(),
+                                      //labelText: 'User Name',
+                                      hintText: 'Enter Your Name',
+                                    ),
+                                  ),
+                                ),
+                                SizedBox(height: 15),
+                                Container(
+                                  width: (MediaQuery.of(context).size.width)/1.3,
+                                  height: (MediaQuery.of(context).size.width)/10,
+                                  child:TextField(
+                                    controller: nameController,
+                                    decoration: InputDecoration(
+                                      enabledBorder: OutlineInputBorder(
+                                        borderSide: const BorderSide(color: Colors.black, width: 1.0),
+
+                                      ),
+                                      //labelText: 'User Name',
+                                      hintText: 'Enter your email',
+                                    ),
+                                  ),
+                                ),
 
                               ],
                             ),

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:whatchlist/views/login_view.dart';
+import 'package:whatchlist/widget/iconButton.dart';
 
 
 
@@ -24,42 +24,6 @@ class HomePage extends State<FirstScreen>{
 
   void crearCuenta(){
         (context) => const FirstScreen();
-  }
-
-  @override
-  _buttomIcon(String title, double width, double height, Function() onTap, Color color, double textSize, {IconData? iconData}){
-    return Container(
-
-      width: (MediaQuery.of(context).size.width)/width,
-      height: (MediaQuery.of(context).size.width)/height,
-      child: RaisedButton(
-        child: Row(
-          children: [
-              CircleAvatar(
-                maxRadius: 20,
-                child: Icon(iconData, color: Colors.black,),
-                backgroundColor: Colors.white,
-              ),
-
-
-            SizedBox(width: 20),
-             Text(
-              title,
-              style: TextStyle(
-                  color: Colors.black,
-                  fontSize: textSize,
-                  fontWeight: FontWeight.w500),
-            ),
-          ],
-        ),
-        onPressed: onTap,
-        color: color,
-        splashColor: color.withOpacity(0),
-        shape:  RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(20)
-        ),
-      ),
-    );
   }
 
   @override
@@ -108,9 +72,9 @@ class HomePage extends State<FirstScreen>{
                           child: Column(
                             children: [
                               SizedBox(height: 20),
-                              _buttomIcon("Iniciar sesión", 1.3, 5,login, Color.fromRGBO(169, 169, 169, 1), 20, iconData: Icons.person),
+                              IconButtom(title: "Iniciar sesión", width: 1.3, height: 5, onTap: login, color: Color.fromRGBO(169, 169, 169, 1), textSize: 20, iconData: Icons.person,),
                               SizedBox(height: 20),
-                              _buttomIcon("Crear una cuenta", 1.3, 3, crearCuenta, Color.fromRGBO(169, 169, 169, 1), 20, iconData: Icons.person),
+                              IconButtom(title: "Iniciar sesión", width: 1.3, height: 3, onTap: crearCuenta, color: Color.fromRGBO(169, 169, 169, 1), textSize: 20, iconData: Icons.person,)
 
                             ],
                           ),
