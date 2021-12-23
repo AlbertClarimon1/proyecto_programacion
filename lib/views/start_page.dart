@@ -17,7 +17,6 @@ class HomePage extends State<FirstScreen>{
   void login(){
     setState(() {
       Navigator.pushNamed(context, '/second');
-      print("hola");
     });
 
   }

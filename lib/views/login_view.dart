@@ -43,7 +43,7 @@ class Login extends State<LoginView>  {
                     overflow: Overflow.visible,
                     children: [
                       Image.asset(
-                        'assets/Start_Image.png',
+                        'assets/login_image.png',
                         width: (MediaQuery.of(context).size.width),
                         //fit: BoxFit.contain,
                       ),
