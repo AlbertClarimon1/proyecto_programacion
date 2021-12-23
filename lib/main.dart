@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:whatchlist/views/start_page.dart';
+import 'package:whatchlist/views/login_view.dart';
+
 
 void main() {
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatefulWidget {
-   MyApp({Key? key}) : super(key: key);
+   const MyApp({Key? key}) : super(key: key);
 
   // This widget is the root of your application.
   @override
@@ -43,6 +45,7 @@ class _AppState extends State<MyApp> {
       initialRoute: '/',
       routes: {
         '/' : (context) => const FirstScreen(),
+        '/second': (context) => const LoginView()
       },
       /*home: routes.buildPage('startpage', null),
       onGenerateRoute: (RouteSettings settings) {
