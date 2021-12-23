@@ -9,8 +9,9 @@ class SimpleButtom extends StatelessWidget{
   final Function() onTap;
   final double textSize;
   final Color borderColor;
+  final double borderwidth;
 
-  SimpleButtom({ required this.title, required this.width,  required this.height, required this.onTap, required this.color, required this.textSize, required this.borderColor});
+  SimpleButtom({ required this.title, required this.width,  required this.height, required this.onTap, required this.color, required this.textSize, required this.borderColor, required this.borderwidth});
 
   @override
   Widget build(BuildContext context){
@@ -31,7 +32,7 @@ class SimpleButtom extends StatelessWidget{
         splashColor: color.withOpacity(0),
         shape:  RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(5),
-            side: BorderSide(color: borderColor)
+            side: BorderSide(color: borderColor, width: borderwidth)
         ),
       ),
     );

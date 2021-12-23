@@ -7,11 +7,11 @@ import 'package:whatchlist/widget/iconButton.dart';
 class FirstScreen extends StatefulWidget {
 
   const FirstScreen({Key? key}) : super(key: key);
-  State<FirstScreen> createState() => HomePage();
+  State<FirstScreen> createState() => StartPage();
   //HomePage createState()=> HomePage();
 }
 
-class HomePage extends State<FirstScreen>{
+class StartPage extends State<FirstScreen>{
 
 
   void login(){

@@ -11,18 +11,49 @@ class LoginView extends StatefulWidget {
 
 class Login extends State<LoginView>  {
   TextEditingController nameController = TextEditingController();
-  void login(){
+  TextEditingController passwordController = TextEditingController();
+
+  void facebook(){
     setState(() {
-      Navigator.pushNamed(context, '/');
-      print("hola");
+      //Navigator.pushNamed(context, '/');
     });
 
   }
 
-  void crearCuenta(){
-       // (context) => const FirstScreen();
+  void google(){
+    setState(() {
+     // Navigator.pushNamed(context, '/');
+    });
+
   }
 
+  void home(){
+    setState(() {
+      Navigator.pushNamed(context, '/home');
+    });
+
+  }
+
+
+
+
+  @override
+  _TextLabel(String title, double width, TextEditingController controller ){
+    return Container(
+      width: (MediaQuery.of(context).size.width)/1.3,
+      height: (MediaQuery.of(context).size.width)/10,
+      child:TextField(
+        controller: controller,
+        decoration: InputDecoration(
+          enabledBorder: OutlineInputBorder(
+            borderSide: BorderSide(color: Colors.black, width: width),
+          ),
+          //labelText: 'User Name',
+          hintText: title,
+        ),
+      ),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -37,10 +68,10 @@ class Login extends State<LoginView>  {
               //mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 Container(
-                  height: (MediaQuery.of(context).size.height)/1.5,
+                  height: (MediaQuery.of(context).size.height+22)/1.1,
                   width: (MediaQuery.of(context).size.width),
                   child: Stack(
-                    overflow: Overflow.visible,
+                    //overflow: Overflow.visible,
                     children: [
                       Image.asset(
                         'assets/login_image.png',
@@ -49,7 +80,7 @@ class Login extends State<LoginView>  {
                       ),
                       // SizedBox(height: 0),
                       Positioned(
-                        bottom: (MediaQuery.of(context).size.width)/2.2-(MediaQuery.of(context).size.height-(MediaQuery.of(context).size.width+100)),
+                        bottom: (MediaQuery.of(context).size.width)-(MediaQuery.of(context).size.height-(MediaQuery.of(context).size.width+100)),
                         left: (MediaQuery.of(context).size.width)/16,
                         right: (MediaQuery.of(context).size.width)/16,
                         child:Container(
@@ -64,7 +95,7 @@ class Login extends State<LoginView>  {
                                   color: Colors.grey.withOpacity(0.5),
                                   spreadRadius: 2.5,
                                   blurRadius: 1,
-                                  offset: Offset(0, 5), // changes position of shadow
+                                  offset: Offset(0,5), // changes position of shadow
                                 ),
                               ],
                             ),
@@ -72,9 +103,9 @@ class Login extends State<LoginView>  {
                             child: Column(
                               children: [
                                 SizedBox(height: 20),
-                                SimpleButtom(title: "Continuar con facebook", width: 1.3, height: 10, onTap: login, color: Colors.white, textSize: 15, borderColor: Colors.black),
+                                SimpleButtom(title: "Continuar con facebook", width: 1.3, height: 10, onTap: facebook, color: Colors.white, textSize: 15, borderColor: Colors.black, borderwidth: 1),
                                 SizedBox(height: 5),
-                                SimpleButtom(title: "Continuar con google", width: 1.3, height: 10, onTap: login, color: Colors.white, textSize: 15, borderColor: Colors.black),
+                                SimpleButtom(title: "Continuar con google", width: 1.3, height: 10, onTap: google, color: Colors.white, textSize: 15, borderColor: Colors.black, borderwidth: 1),
                                 SizedBox(height: 25),
                                 Text(
                                   "o",
@@ -84,20 +115,12 @@ class Login extends State<LoginView>  {
                                       fontWeight: FontWeight.w500),
                                 ),
                                 SizedBox(height: 25),
-                                Container(
-                                  width: (MediaQuery.of(context).size.width)/1.3,
-                                  height: (MediaQuery.of(context).size.width)/10,
-                                  child:TextField(
-                                    controller: nameController,
-                                    decoration: InputDecoration(
-                                      border: OutlineInputBorder(),
-                                      //labelText: 'User Name',
-                                      hintText: 'Enter Your Name',
-                                    ),
-                                  ),
-                                ),
+                                _TextLabel("Pon tu nombre", 1.0, nameController),
                                 SizedBox(height: 15),
-                                Container(
+                                _TextLabel("Pon tu Email", 1.0,passwordController ),
+                                SizedBox(height: 25),
+                                SimpleButtom(title: "Continuar", width: 1.3, height: 10, onTap: home, color: Color.fromRGBO(255, 199, 0 , 1), textSize: 15, borderColor: Colors.black, borderwidth: 0),
+                                /*Container(
                                   width: (MediaQuery.of(context).size.width)/1.3,
                                   height: (MediaQuery.of(context).size.width)/10,
                                   child:TextField(
@@ -105,13 +128,12 @@ class Login extends State<LoginView>  {
                                     decoration: InputDecoration(
                                       enabledBorder: OutlineInputBorder(
                                         borderSide: const BorderSide(color: Colors.black, width: 1.0),
-
                                       ),
                                       //labelText: 'User Name',
                                       hintText: 'Enter your email',
                                     ),
                                   ),
-                                ),
+                                ),*/
 
                               ],
                             ),

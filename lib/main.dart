@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:whatchlist/views/start_page.dart';
 import 'package:whatchlist/views/login_view.dart';
+import 'package:whatchlist/views/home.dart';
 
 
 void main() {
@@ -44,9 +45,10 @@ class _AppState extends State<MyApp> {
       ],*/
       initialRoute: '/',
       routes: {
-        
+
         '/' : (context) => const FirstScreen(),
-        '/second': (context) => const LoginView()
+        '/second': (context) => const LoginView(),
+        '/home': (context) => const Home()
       },
       /*home: routes.buildPage('startpage', null),
       onGenerateRoute: (RouteSettings settings) {
