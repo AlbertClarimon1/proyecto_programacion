@@ -37,6 +37,13 @@
             {
               "client_id": "25354303654-n92lkd18t2t0vtlabkeqvismj1br5gh7.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "25354303654-lru0glpa7tc02mgmsoq7rut205kk6qlu.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.movielook.whatchlist"
+              }
             }
           ]
         }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 import 'package:whatchlist/services/auth.dart';
 import 'package:whatchlist/widget/simpleButton.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -15,6 +16,7 @@ class Register extends State<RegisterView>  {
   TextEditingController nameController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
   TextEditingController repitpasswordController = TextEditingController();
+  final GoogleSignIn _googleSignIn = GoogleSignIn();
   final FirebaseAuth _auth = FirebaseAuth.instance;
   bool accept = false;
   bool age = false;
@@ -28,10 +30,11 @@ class Register extends State<RegisterView>  {
       TextEditingController password) async {
     try {
       if (accept){
+
         setState(() async {
           UserCredential result = await FirebaseAuth.instance
               .createUserWithEmailAndPassword(
-              email: email.text.trim().toLowerCase(), password: password.text);
+              email: email.text.trim().toLowerCase()+age.toString(), password: password.text);
           print('Signed up: ${result.user!.uid}');
           Navigator.pushNamed(context, '/home');
         });
@@ -48,6 +51,30 @@ class Register extends State<RegisterView>  {
     }
   }
 
+
+
+  void signInwithGoogle()=>_signInwithGoogle();
+
+  Future<String?> _signInwithGoogle() async {
+    try {
+      final GoogleSignInAccount? googleSignInAccount =
+      await _googleSignIn.signIn();
+      final GoogleSignInAuthentication googleSignInAuthentication =
+      await googleSignInAccount!.authentication;
+      final AuthCredential credential = GoogleAuthProvider.credential(
+        accessToken: googleSignInAuthentication.accessToken,
+        idToken: googleSignInAuthentication.idToken,
+      );
+      await _auth.signInWithCredential(credential);
+    } on FirebaseAuthException catch (e) {
+      print(e.message);
+      throw e;
+    }
+  }
+  Future<void> signOutFromGoogle() async{
+    await _googleSignIn.signOut();
+    await _auth.signOut();
+  }
   void facebook(){
     setState(() {
       //Navigator.pushNamed(context, '/');
@@ -134,7 +161,7 @@ class Register extends State<RegisterView>  {
                                 SizedBox(height: 15),
                                 SimpleButtom(title: "Continuar con facebook", width: 1.3, height: 10, onTap: facebook, color: Colors.white, textSize: 15, borderColor: Colors.black, borderwidth: 1),
                                 SizedBox(height: 5),
-                                SimpleButtom(title: "Continuar con google", width: 1.3, height: 10, onTap: google, color: Colors.white, textSize: 15, borderColor: Colors.black, borderwidth: 1),
+                                SimpleButtom(title: "Continuar con google", width: 1.3, height: 10, onTap: signInwithGoogle, color: Colors.white, textSize: 15, borderColor: Colors.black, borderwidth: 1),
                                 SizedBox(height: 17),
                                 Text(
                                   "o",
