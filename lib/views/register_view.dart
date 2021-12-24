@@ -27,12 +27,12 @@ class Register extends State<RegisterView>  {
   Future<bool> _signUpWithEmailAndPassword(TextEditingController email,
       TextEditingController password) async {
     try {
-      UserCredential result = await FirebaseAuth.instance
-          .createUserWithEmailAndPassword(
-          email: email.text.trim().toLowerCase(), password: password.text);
-      print('Signed up: ${result.user!.uid}');
       if (accept){
-        setState(() {
+        setState(() async {
+          UserCredential result = await FirebaseAuth.instance
+              .createUserWithEmailAndPassword(
+              email: email.text.trim().toLowerCase(), password: password.text);
+          print('Signed up: ${result.user!.uid}');
           Navigator.pushNamed(context, '/home');
         });
       }else{

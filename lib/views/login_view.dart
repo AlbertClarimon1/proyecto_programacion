@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:whatchlist/widget/simpleButton.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/services.dart';
 
 
 class LoginView extends StatefulWidget {
@@ -12,6 +14,28 @@ class LoginView extends StatefulWidget {
 class Login extends State<LoginView>  {
   TextEditingController nameController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
+
+  Future<bool> signInWithEmail( email, password) =>
+      _signInWithEmail(email, password);
+
+
+  Future<bool> _signInWithEmail( TextEditingController email,
+      TextEditingController password) async {
+    try {
+
+      setState(() async {
+        UserCredential result = await FirebaseAuth.instance
+            .signInWithEmailAndPassword(
+            email: email.text.trim().toLowerCase(), password: password.text);
+        print('Signed in: ${result.user!.uid}');
+        Navigator.pushNamed(context, '/home');
+      });
+      return true;
+    } catch (e) {
+      print('Error: $e');
+      return false;
+    }
+  }
 
   void facebook(){
     setState(() {
@@ -38,7 +62,7 @@ class Login extends State<LoginView>  {
 
 
   @override
-  _TextLabel(String title, double width, TextEditingController controller ){
+  _TextLabel(String title, double width, TextEditingController controller, bool _obscureText ){
     return Container(
       width: (MediaQuery.of(context).size.width)/1.3,
       height: (MediaQuery.of(context).size.width)/10,
@@ -50,7 +74,9 @@ class Login extends State<LoginView>  {
           ),
           //labelText: 'User Name',
           hintText: title,
+
         ),
+        obscureText: _obscureText,
       ),
     );
   }
@@ -115,11 +141,11 @@ class Login extends State<LoginView>  {
                                       fontWeight: FontWeight.w500),
                                 ),
                                 SizedBox(height: 25),
-                                _TextLabel("Pon tu nombre", 1.0, nameController),
+                                _TextLabel("Pon tu email", 1.0, nameController, false),
                                 SizedBox(height: 15),
-                                _TextLabel("Pon tu Email", 1.0,passwordController ),
+                                _TextLabel("Pon tu contraseña", 1.0,passwordController,true),
                                 SizedBox(height: 25),
-                                SimpleButtom(title: "Continuar", width: 1.3, height: 10, onTap: home, color: Color.fromRGBO(255, 199, 0 , 1), textSize: 15, borderColor: Colors.black, borderwidth: 0),
+                                SimpleButtom(title: "Continuar", width: 1.3, height: 10, onTap: ()=> signInWithEmail(nameController, passwordController), color: Color.fromRGBO(255, 199, 0 , 1), textSize: 15, borderColor: Colors.black, borderwidth: 0),
                                 /*Container(
                                   width: (MediaQuery.of(context).size.width)/1.3,
                                   height: (MediaQuery.of(context).size.width)/10,
