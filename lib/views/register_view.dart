@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:whatchlist/services/auth.dart';
 import 'package:whatchlist/widget/simpleButton.dart';
-
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/services.dart';
 
 class RegisterView extends StatefulWidget {
 
@@ -13,9 +15,38 @@ class Register extends State<RegisterView>  {
   TextEditingController nameController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
   TextEditingController repitpasswordController = TextEditingController();
+  final FirebaseAuth _auth = FirebaseAuth.instance;
   bool accept = false;
   bool age = false;
   Color colorbox = Colors.black;
+
+
+  void signUpWithEmailAndPassword(email, password) =>
+      _signUpWithEmailAndPassword(email, password);
+
+  Future<bool> _signUpWithEmailAndPassword(TextEditingController email,
+      TextEditingController password) async {
+    try {
+      UserCredential result = await FirebaseAuth.instance
+          .createUserWithEmailAndPassword(
+          email: email.text.trim().toLowerCase(), password: password.text);
+      print('Signed up: ${result.user!.uid}');
+      if (accept){
+        setState(() {
+          Navigator.pushNamed(context, '/home');
+        });
+      }else{
+        setState(() {
+          colorbox = Colors.red;
+        });
+
+      }
+      return true;
+    } catch (e) {
+      print('Error: $e');
+      return false;
+    }
+  }
 
   void facebook(){
     setState(() {
@@ -31,19 +62,6 @@ class Register extends State<RegisterView>  {
 
   }
 
-  void home(){
-    if (accept){
-      setState(() {
-        Navigator.pushNamed(context, '/home');
-      });
-    }else{
-      setState(() {
-        colorbox = Colors.red;
-      });
-
-    }
-
-  }
 
 
 
@@ -187,7 +205,7 @@ class Register extends State<RegisterView>  {
                                   ],
                                 ),
                                 SizedBox(height: 10),
-                                SimpleButtom(title: "Continuar", width: 1.3, height: 10, onTap: home, color: Color.fromRGBO(255, 199, 0 , 1), textSize: 15, borderColor: Colors.black, borderwidth: 0),
+                                SimpleButtom(title: "Continuar", width: 1.3, height: 10, onTap: ()=> signUpWithEmailAndPassword(nameController, passwordController), color: Color.fromRGBO(255, 199, 0 , 1), textSize: 15, borderColor: Colors.black, borderwidth: 0),
                                 /*Container(
                                   width: (MediaQuery.of(context).size.width)/1.3,
                                   height: (MediaQuery.of(context).size.width)/10,

@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "25354303654",
+    "project_id": "movielook-f6b47",
+    "storage_bucket": "movielook-f6b47.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:25354303654:android:00f181edac182f55d2dc67",
+        "android_client_info": {
+          "package_name": "com.movielook.whatchlist"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "25354303654-26j24535ujbn5ckgf5aktsksgjdkeiml.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.movielook.whatchlist",
+            "certificate_hash": "cc923f59004349adcae07a9c14b9e62c3b87170c"
+          }
+        },
+        {
+          "client_id": "25354303654-n92lkd18t2t0vtlabkeqvismj1br5gh7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC46WNFzKXu9Tb-0NhGdKi51IjyYgjUZ7Y"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "25354303654-n92lkd18t2t0vtlabkeqvismj1br5gh7.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
