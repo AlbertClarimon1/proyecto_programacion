@@ -7,16 +7,18 @@ import 'package:whatchlist/views/home.dart';
 import 'package:whatchlist/views/register_view.dart';
 import 'package:firebase_analytics/firebase_analytics.dart';
 import 'firebase_options.dart';
-
+import 'package:whatchlist/services/auth.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
-  runApp(MyApp());
+  runApp(MyApp(post: getPopularMovies()));
 }
 
 class MyApp extends StatefulWidget {
-   const MyApp({Key key}) : super(key: key);
+  final Future<List<PopularMovie>> post;
+
+  const MyApp({Key key, this.post}) : super(key: key);
 
   // This widget is the root of your application.
   @override

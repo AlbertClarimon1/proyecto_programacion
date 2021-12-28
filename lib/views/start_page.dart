@@ -16,7 +16,7 @@ class StartPage extends State<FirstScreen>{
 
   void login(){
     setState(() {
-      Navigator.pushNamed(context, '/login');
+      Navigator.pushNamed(context, '/home');
     });
 
   }
@@ -89,7 +89,7 @@ class StartPage extends State<FirstScreen>{
                               SizedBox(height: 20),
                               IconButtom(title: "Iniciar sesión", width: 1.3, height: 5, onTap: login, color: Color.fromRGBO(169, 169, 169, 1), textSize: 20, iconData: Icons.person,),
                               SizedBox(height: 20),
-                              IconButtom(title: "Iniciar sesión", width: 1.3, height: 3, onTap: crearCuenta, color: Color.fromRGBO(169, 169, 169, 1), textSize: 20, iconData: Icons.person,)
+                              IconButtom(title: "Registrarse", width: 1.3, height: 3, onTap: crearCuenta, color: Color.fromRGBO(169, 169, 169, 1), textSize: 20, iconData: Icons.person,)
 
                             ],
                           ),
