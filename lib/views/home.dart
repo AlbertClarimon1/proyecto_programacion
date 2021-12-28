@@ -72,19 +72,19 @@ class HomePage extends State<Home>{
                       return Container(
                         child: Column(
                           children: [
-                            Text(
+                            /*Text(
                               movies[index].title,
                               style: TextStyle(
                                   color: Colors.white,
                                   fontSize: 15,
                                   fontWeight: FontWeight.w500),
-                            ),
+                            ),*/
 
                             FadeInImage.memoryNetwork(
                               placeholder: kTransparentImage,
                               image: "https://image.tmdb.org/t/p/w500/" + movies[index].posterPath,
                               fit: BoxFit.cover,
-                              height: 430,
+                              height: 450,
                             ),
                           ],
                         ),
@@ -113,7 +113,6 @@ class HomePage extends State<Home>{
             return Container(
               child: Column(
                   children: [
-
                     popularmoviesicon("Mejor calificadas", "http://api.themoviedb.org/3/discover/movie?sort_by=vote_average.desc&api_key=70242251c4047938bf574587e8bf585e&1&vote_count.gte=10000http://api.themoviedb.org/3/discover/movie?sort_by=vote_average.desc&api_key=70242251c4047938bf574587e8bf585e&1&vote_count.gte=10000"),
                     SizedBox(height: 20),
                     popularmoviesicon("Proximos lanzamientos", "https://api.themoviedb.org/3/movie/upcoming?api_key=70242251c4047938bf574587e8bf585e"),
