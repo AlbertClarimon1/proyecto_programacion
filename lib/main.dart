@@ -12,7 +12,7 @@ import 'package:whatchlist/services/auth.dart';
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
-  runApp(MyApp(post: getPopularMovies()));
+  runApp(MyApp(post: getPopularMovies(apiType)));
 }
 
 class MyApp extends StatefulWidget {

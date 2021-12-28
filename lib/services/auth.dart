@@ -24,9 +24,8 @@ class PopularMovie {
 }
 
 
-Future <List<PopularMovie>> getPopularMovies() async {
-  final String nowPlaying =
-      'http://api.themoviedb.org/3/discover/movie?sort_by=vote_average.desc&api_key=70242251c4047938bf574587e8bf585e&1&vote_count.gte=10000http://api.themoviedb.org/3/discover/movie?sort_by=vote_average.desc&api_key=70242251c4047938bf574587e8bf585e&1&vote_count.gte=10000';
+Future <List<PopularMovie>> getPopularMovies( String Api) async {
+  final String nowPlaying = Api;
 
   var httpClient = HttpClient();
   var request = await httpClient.getUrl(Uri.parse(nowPlaying));
