@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:whatchlist/widget/simpleButton.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/services.dart';
+import 'package:whatchlist/widget/textField.dart';
 
 
 class LoginView extends StatefulWidget {
@@ -61,7 +62,7 @@ class Login extends State<LoginView>  {
 
 
 
-  @override
+  /*@override
   _TextLabel(String title, double width, TextEditingController controller, bool _obscureText ){
     return Container(
       width: (MediaQuery.of(context).size.width)/1.3,
@@ -79,7 +80,7 @@ class Login extends State<LoginView>  {
         obscureText: _obscureText,
       ),
     );
-  }
+  }*/
 
   @override
   Widget build(BuildContext context) {
@@ -141,9 +142,9 @@ class Login extends State<LoginView>  {
                                       fontWeight: FontWeight.w500),
                                 ),
                                 SizedBox(height: 25),
-                                _TextLabel("Pon tu email", 1.0, nameController, false),
+                                TextFiel(title: "Pon tu email", width: 1.0, controller: nameController, obscureText: false, context: context),
                                 SizedBox(height: 15),
-                                _TextLabel("Pon tu contraseña", 1.0,passwordController,true),
+                                TextFiel(title: "Pon tu contraseña", width: 1.0, controller: passwordController, obscureText: true, context: context),
                                 SizedBox(height: 25),
                                 SimpleButtom(title: "Continuar", width: 1.3, height: 10, onTap: ()=> signInWithEmail(nameController, passwordController), color: Color.fromRGBO(255, 199, 0 , 1), textSize: 15, borderColor: Colors.black, borderwidth: 0),
                                 /*Container(

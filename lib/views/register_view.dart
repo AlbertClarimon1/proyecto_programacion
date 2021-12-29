@@ -4,6 +4,7 @@ import 'package:whatchlist/services/auth.dart';
 import 'package:whatchlist/widget/simpleButton.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/services.dart';
+import 'package:whatchlist/widget/textField.dart';
 
 class RegisterView extends StatefulWidget {
 
@@ -171,11 +172,14 @@ class Register extends State<RegisterView>  {
                                       fontWeight: FontWeight.w500),
                                 ),
                                 SizedBox(height: 17),
-                                _TextLabel("Pon tu email", 1.0, nameController),
+                                TextFiel(title: "Pon tu email", width: 1.0, controller: nameController, obscureText: false, context: context),
+                                //_TextLabel("Pon tu email", 1.0, nameController),
                                 SizedBox(height: 10),
-                                _TextLabel("Pon tu contraseña", 1.0,passwordController ),
+                                TextFiel(title: "Pon tu contraseña", width: 1.0, controller: passwordController, obscureText: false, context: context),
+                               // _TextLabel("Pon tu contraseña", 1.0,passwordController ),
                                 SizedBox(height: 10),
-                                _TextLabel("Repite tu contraseña", 1.0,repitpasswordController ),
+                                TextFiel(title: "Repite tu contraseña", width: 1.0, controller: repitpasswordController, obscureText: false, context: context),
+                                //_TextLabel("Repite tu contraseña", 1.0,repitpasswordController ),
                                 SizedBox(height: 10),
                                 Row(
                                   children: [

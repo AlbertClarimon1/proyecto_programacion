@@ -16,7 +16,7 @@ appBar2(BuildContext context){
           child: Row(
             children: [
               IconButton(onPressed: ()=>Navigator.pushNamed(context, '/search'), icon: Icon(Icons.search)),
-              IconButton(onPressed: ()=>Navigator.pushNamed(context, '/search'), icon: Icon(Icons.menu)),
+              IconButton(onPressed: ()=>Navigator.pushNamed(context, '/configurations'), icon: Icon(Icons.menu)),
             ],
           ),
         )
