@@ -77,17 +77,6 @@ class MovieDetailsPage extends StatelessWidget {
                           ),
                         ),
                         SizedBox(height: 15),
-                        /*Text(
-
-                          movies.adult.toString(),
-                          style: const TextStyle(
-                            color: Colors.white,
-                            fontSize: 15,
-                            fontWeight: FontWeight.w500,
-                          ),
-                        ),*/
-
-
                       ],
                     ),
 
@@ -95,25 +84,6 @@ class MovieDetailsPage extends StatelessWidget {
                 }
 
             );
-            /*return SingleChildScrollView(
-              child: Column(
-                children: [
-                  MovieDetailHeader(movies),
-                  Padding(
-                    padding: const EdgeInsets.all(0.0),
-                    child: StoryLine(movies.synopsis),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(
-                      top: 20.0,
-                      bottom: 50.0,
-                    ),
-                    child: ProductionCompaniesScroller(
-                        movies.productionCompanies),
-                  ),
-                ],
-              ),
-            );*/
           }
         },
       ),
@@ -131,13 +101,6 @@ class MovieDetailsPage extends StatelessWidget {
     var httpClient = HttpClient();
     final response = await http.get(Uri.parse(nowPlaying));
     final responseJson = json.decode(response.body);
-
-//      var request = await httpClient.getUrl(Uri.parse(nowPlaying));
-//      var response = await request.close();
-//        var jsonResponse = await responseJson .transform(utf8.decoder).join();
-    // Decode the json response
-//        var data = jsonDecode(jsonResponse);
-    // Get the Movie list
     MovieDetail movieDetail = createDetailList(responseJson);
     // Print the results.
     return movieDetail;
