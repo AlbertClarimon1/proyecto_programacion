@@ -142,9 +142,9 @@ class Login extends State<LoginView>  {
                                       fontWeight: FontWeight.w500),
                                 ),
                                 SizedBox(height: 25),
-                                TextFiel(title: "Pon tu email", width: 1.0, controller: nameController, obscureText: false, context: context),
+                                TextFiel(title: "Pon tu email", width: 1.0, controller: nameController, obscureText: false, context: context, color: Colors.black),
                                 SizedBox(height: 15),
-                                TextFiel(title: "Pon tu contraseña", width: 1.0, controller: passwordController, obscureText: true, context: context),
+                                TextFiel(title: "Pon tu contraseña", width: 1.0, controller: passwordController, obscureText: true, context: context, color: Colors.black),
                                 SizedBox(height: 25),
                                 SimpleButtom(title: "Continuar", width: 1.3, height: 10, onTap: ()=> signInWithEmail(nameController, passwordController), color: Color.fromRGBO(255, 199, 0 , 1), textSize: 15, borderColor: Colors.black, borderwidth: 0),
                                 /*Container(

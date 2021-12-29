@@ -1,6 +1,7 @@
 // @dart=2.9
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:whatchlist/views/search.dart';
 import 'package:whatchlist/views/start_page.dart';
 import 'package:whatchlist/views/login_view.dart';
 import 'package:whatchlist/views/home.dart';
@@ -8,6 +9,7 @@ import 'package:whatchlist/views/register_view.dart';
 import 'package:firebase_analytics/firebase_analytics.dart';
 import 'firebase_options.dart';
 import 'package:whatchlist/services/auth.dart';
+import 'package:whatchlist/views/search.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -58,7 +60,8 @@ class _AppState extends State<MyApp> {
         '/' : (context) => const FirstScreen(),
         '/login': (context) => const LoginView(),
         '/home': (context) => const Home(),
-        '/register': (context) => const RegisterView()
+        '/register': (context) => const RegisterView(),
+        '/search': (context) => const Search()
       },
       /*home: routes.buildPage('startpage', null),
       onGenerateRoute: (RouteSettings settings) {
