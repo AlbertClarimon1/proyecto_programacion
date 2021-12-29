@@ -1,7 +1,12 @@
+import 'dart:convert';
+import 'dart:io';
+
 import 'package:flutter/material.dart';
+import 'package:whatchlist/services/MovieDetailsPage.dart';
 import 'package:whatchlist/services/auth.dart';
 import 'package:whatchlist/views/home.dart';
 import 'package:whatchlist/widget/textField.dart';
+import 'package:http/http.dart' as http;
 
 class Search extends StatefulWidget{
 
@@ -10,9 +15,30 @@ class Search extends StatefulWidget{
   State<Search> createState() => SearchMovie();
 }
 
-textToApi(){
+textToApi(TextEditingController movie, BuildContext context) async {
+  final String nowPlaying = 'https://api.themoviedb.org/3/search/movie?api_key=70242251c4047938bf574587e8bf585e&query=' + movie.text.trim().toLowerCase();
+  var httpClient = HttpClient();
+  final response = await http.get(Uri.parse(nowPlaying));
+  final responseJson = json.decode(response.body);
+  //createDetailList(responseJson);
+  var id = responseJson["results"][0]["id"];
+  Navigator.push(
+    context,
+    MaterialPageRoute(
+        builder: (_) => MovieDetailsPage(id)),
+  );
+  // Print the results.
+  //return movieDetail;
 
 }
+
+ createDetailList(data) {
+  //List<String> genresList = [];
+  //List<ProductionCompanies> productionCompaniesList = [];
+
+
+
+  }
 
 class SearchMovie extends State<Search>{
   TextEditingController nameController = TextEditingController();
@@ -28,7 +54,7 @@ class SearchMovie extends State<Search>{
               children: [
                 SizedBox(width: 10),
                 TextFiel(title: "Buscar pelicula", width: 1.0, controller: nameController, obscureText: false, context: context,color: Colors.white),
-                IconButton(onPressed: textToApi, icon: Icon(Icons.search), color: Colors.white,),
+                IconButton(onPressed: ()=>  textToApi(nameController, context), icon: Icon(Icons.search), color: Colors.white,),
                 //Tex("Pon tu contraseña", 1.0,passwordController,true),
               ],
             ),

@@ -106,6 +106,21 @@ class MovieDetailsPage extends StatelessWidget {
     return movieDetail;
   }
 
+  Future<MovieDetail> getNameDetail() async {
+    final String nowPlaying = 'https://api.themoviedb.org/3/movie/' +
+        id.toString() +
+        '?api_key=70242251c4047938bf574587e8bf585e' +
+        '&language=' +
+        lenguaje;
+
+    var httpClient = HttpClient();
+    final response = await http.get(Uri.parse(nowPlaying));
+    final responseJson = json.decode(response.body);
+    MovieDetail movieDetail = createDetailList(responseJson);
+    // Print the results.
+    return movieDetail;
+  }
+
   MovieDetail createDetailList(data) {
     List<String> genresList = [];
     List<ProductionCompanies> productionCompaniesList = [];

@@ -112,8 +112,8 @@ popularmoviesicon(String textType, String Api, BuildContext context ){
                                 Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (_) => MovieDetailsPage(movies[index].id )),
-                                );
+                                    builder: (_) => MovieDetailsPage(movies[index].id )),
+                              );
                               }
                             },
                             child: FadeInImage.memoryNetwork(
