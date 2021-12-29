@@ -66,6 +66,78 @@ List<PopularMovie> createPopularMovieList(List data) {
   return list;
 }
 
+popularmoviesicon(String textType, String Api, BuildContext context ){
+  return Container(
+    height: (MediaQuery.of(context).size.height)/1.5,
+    width: (MediaQuery.of(context).size.width),
+    //child: Expanded(
+    child: Column(
+      children: [
+        Row(
+          children: [
+            Text(
+              textType,
+              style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 20,
+                  fontWeight: FontWeight.w500),
+            ),
+          ],
+        ),
+        SizedBox(height: 20),
+        Expanded(
+          //child: Column(
+          //children: [
+          child: FutureBuilder<List<PopularMovie>>(
+            future: getPopularMovies(Api),
+            builder: (BuildContext context, AsyncSnapshot<List> snapshot){
+              if(!snapshot.hasData)
+                return Center(
+                  child: CircularProgressIndicator(),
+                );
+              // return
+              List<PopularMovie>? movies = snapshot.data?.cast<PopularMovie>();
+
+              return ListView.builder(
+                  scrollDirection: Axis.horizontal,
+                  padding: const EdgeInsets.all(8),
+                  itemCount: movies!.length,
+                  itemBuilder: (BuildContext context, int index){
+                    return Container(
+                      child: Column(
+                        children: [
+                          GestureDetector(
+                            onTap: (){
+                              if (movies[index].id > 0) {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (_) => MovieDetailsPage(movies[index].id )),
+                                );
+                              }
+                            },
+                            child: FadeInImage.memoryNetwork(
+                              placeholder: kTransparentImage,
+                              image: "https://image.tmdb.org/t/p/w500/" + movies[index].posterPath,
+                              fit: BoxFit.cover,
+                              height: 450,
+                            ),
+                          )
+                        ],
+                      ),
+                    );
+                  }
+              );
+            },
+          ),
+        ),
+
+      ],
+    ),
+    // ),
+  );
+}
+
 List<Widget> createPopularMovieCardItem(
     List<PopularMovie> movies, BuildContext context) {
   // Children list for the list.
