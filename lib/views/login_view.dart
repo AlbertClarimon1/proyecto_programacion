@@ -1,4 +1,6 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:whatchlist/views/home.dart';
 import 'package:whatchlist/widget/simpleButton.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/services.dart';
@@ -29,7 +31,9 @@ class Login extends State<LoginView>  {
             .signInWithEmailAndPassword(
             email: email.text.trim().toLowerCase(), password: password.text);
         print('Signed in: ${result.user!.uid}');
+        user = FirebaseAuth.instance.currentUser;
         Navigator.pushNamed(context, '/home');
+
       });
       return true;
     } catch (e) {

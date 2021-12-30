@@ -1,6 +1,8 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:whatchlist/services/auth.dart';
+import 'package:whatchlist/views/home.dart';
 import 'package:whatchlist/widget/simpleButton.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/services.dart';
@@ -17,6 +19,8 @@ class Register extends State<RegisterView>  {
   TextEditingController nameController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
   TextEditingController repitpasswordController = TextEditingController();
+  TextEditingController idioma = TextEditingController();
+
   final GoogleSignIn _googleSignIn = GoogleSignIn();
   final FirebaseAuth _auth = FirebaseAuth.instance;
   bool accept = false;
@@ -35,9 +39,18 @@ class Register extends State<RegisterView>  {
         setState(() async {
           UserCredential result = await FirebaseAuth.instance
               .createUserWithEmailAndPassword(
-              email: email.text.trim().toLowerCase()+age.toString(), password: password.text);
+              email: email.text.trim().toLowerCase(), password: password.text);
           print('Signed up: ${result.user!.uid}');
           Navigator.pushNamed(context, '/home');
+          user = FirebaseAuth.instance.currentUser;
+          
+          await FirebaseFirestore.instance.collection("users").doc(user!.uid).set({
+            'uid' : user?.uid,
+            'email': user?.email,
+            'idiom': lenguaje,
+            'similar_movie': similar_movie,
+            'gustos':gustos,
+          });
         });
       }else{
         setState(() {

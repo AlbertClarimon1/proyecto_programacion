@@ -16,7 +16,7 @@ class StartPage extends State<FirstScreen>{
 
   void login(){
     setState(() {
-      Navigator.pushNamed(context, '/home');
+      Navigator.pushNamed(context, '/login');
     });
 
   }

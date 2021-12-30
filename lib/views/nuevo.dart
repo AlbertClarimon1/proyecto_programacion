@@ -29,7 +29,8 @@ class NuevoPage extends State<Nuevo>{
               return Container(
                 child: Column(
                     children: [
-                      Text("data")
+                      Text("data"),
+                      //IconButton(onPressed: add, icon:  Icon(Icons.menu)),
                     ]
                 ),
               );

@@ -2,6 +2,7 @@
 import 'dart:convert';
 import 'dart:io';
 
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:transparent_image/transparent_image.dart';
@@ -54,7 +55,8 @@ class MovieDetailsPage extends StatelessWidget {
                         SizedBox(height: 15),
                         Row(
                           children: [
-                            Text(
+                            Flexible(
+                              child: Text(
 
                               movies.originalTitle+"\n"+ "("+movies.date.toString()+")",
                               overflow: TextOverflow.ellipsis,
@@ -63,7 +65,8 @@ class MovieDetailsPage extends StatelessWidget {
                                 fontSize: 23,
                                 fontWeight: FontWeight.w500,
                               ),
-                            ),
+                            ),)
+
                             //SizedBox(width: 15),
                           ],
                         ),
@@ -97,22 +100,10 @@ class MovieDetailsPage extends StatelessWidget {
         '?api_key=70242251c4047938bf574587e8bf585e' +
         '&language=' +
         lenguaje;
-
-    var httpClient = HttpClient();
-    final response = await http.get(Uri.parse(nowPlaying));
-    final responseJson = json.decode(response.body);
-    MovieDetail movieDetail = createDetailList(responseJson);
-    // Print the results.
-    return movieDetail;
-  }
-
-  Future<MovieDetail> getNameDetail() async {
-    final String nowPlaying = 'https://api.themoviedb.org/3/movie/' +
-        id.toString() +
-        '?api_key=70242251c4047938bf574587e8bf585e' +
-        '&language=' +
-        lenguaje;
-
+    await FirebaseFirestore.instance.collection("users").doc(user!.uid).update({
+      'similar_movie':id,
+    });
+    similar_movie = id.toString();
     var httpClient = HttpClient();
     final response = await http.get(Uri.parse(nowPlaying));
     final responseJson = json.decode(response.body);
@@ -128,6 +119,7 @@ class MovieDetailsPage extends StatelessWidget {
     var id = data["id"];
     var adult = data["adult"];
     var title = data["title"];
+    //last_movie = title;
     var date = data["release_date"];
     var productionCompany = data["production_companies"];
     for (int i = 0; i < productionCompany.length; i++) {
