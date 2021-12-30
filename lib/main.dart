@@ -1,6 +1,7 @@
 // @dart=2.9
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:whatchlist/views/nuevo.dart';
 import 'package:whatchlist/views/search.dart';
 import 'package:whatchlist/views/start_page.dart';
 import 'package:whatchlist/views/login_view.dart';
@@ -61,7 +62,9 @@ class _AppState extends State<MyApp> {
         '/login': (context) => const LoginView(),
         '/home': (context) => const Home(),
         '/register': (context) => const RegisterView(),
-        '/search': (context) => const Search()
+        '/search': (context) => const Search(),
+        '/new' : (context) => const Nuevo()
+
       },
       /*home: routes.buildPage('startpage', null),
       onGenerateRoute: (RouteSettings settings) {

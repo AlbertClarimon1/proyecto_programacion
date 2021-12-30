@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:whatchlist/widget/appBar.dart';
+import 'package:whatchlist/widget/bottom%20bar.dart';
 
 class Nuevo extends StatefulWidget {
 
@@ -9,25 +10,16 @@ class Nuevo extends StatefulWidget {
 }
 
 class NuevoPage extends State<Nuevo>{
-  int _selectedIndex = 0;
 
-  void login(){
-    setState(() {
-      Navigator.pushNamed(context, '/');
-    });
-  }
 
-  void _onItemTapped(int index) {
-    setState(() {
-      _selectedIndex = index;
-    });
-  }
+
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.black,
       appBar: appBar2(context),
+      bottomNavigationBar: bottomBar(context),
 
       body: SafeArea(
         child: ListView.builder(
@@ -43,43 +35,6 @@ class NuevoPage extends State<Nuevo>{
               );
             }
         ),
-      ),
-
-      bottomNavigationBar: BottomNavigationBar(
-        backgroundColor: Colors.black,
-        type: BottomNavigationBarType.fixed,
-        items: const <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.home,
-            ),
-            label: 'Inicio',
-
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.access_time,
-            ),
-            label: 'Nuevo',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.star,
-            ),
-            label: 'Popular',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.local_movies_rounded,
-            ),
-            label: 'Watchlist',
-          ),
-
-        ],
-        unselectedItemColor: Colors.white,
-        currentIndex: _selectedIndex,
-        selectedItemColor: Colors.amber[800],
-        onTap: _onItemTapped,
       ),
 
     );
