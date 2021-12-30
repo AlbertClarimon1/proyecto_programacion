@@ -2,6 +2,8 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:whatchlist/views/nuevo.dart';
+import 'package:whatchlist/views/popular.dart';
+import 'package:whatchlist/views/watchlist.dart';
 import 'package:whatchlist/views/search.dart';
 import 'package:whatchlist/views/start_page.dart';
 import 'package:whatchlist/views/login_view.dart';
@@ -63,7 +65,9 @@ class _AppState extends State<MyApp> {
         '/home': (context) => const Home(),
         '/register': (context) => const RegisterView(),
         '/search': (context) => const Search(),
-        '/new' : (context) => const Nuevo()
+        '/new' : (context) => const Nuevo(),
+        '/popular' : (context) => const Popular(),
+        '/watchlist' : (context) => const Watchlist()
 
       },
       /*home: routes.buildPage('startpage', null),
