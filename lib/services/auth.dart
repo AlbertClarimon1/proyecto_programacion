@@ -49,24 +49,30 @@ List<PopularMovie> createPopularMovieList(List data) {
     var id = data[i]["id"];
     String title = data[i]["title"];
     String posterPath = data[i]["poster_path"];
-    String backdropImage = data[i]["backdrop_path"];
-    String originalTitle = data[i]["original_title"];
-    var voteAverage = data[i]["vote_average"];
-    String overview = data[i]["overview"];
-    String releaseDate = data[i]["release_date"];
+    if(posterPath != null && data[i]["backdrop_path"]!=null){
+      posterPath = "https://image.tmdb.org/t/p/w500/" + posterPath;
+      String backdropImage = data[i]["backdrop_path"];
+      String originalTitle = data[i]["original_title"];
+      var voteAverage = data[i]["vote_average"];
+      String overview = data[i]["overview"];
+      String releaseDate = data[i]["release_date"];
 
-    PopularMovie movie = PopularMovie(
-        id,
-        title,
-        posterPath,
-        backdropImage,
-        originalTitle, voteAverage, overview, releaseDate);
-    list.add(movie);
+      PopularMovie movie = PopularMovie(
+          id,
+          title,
+          posterPath,
+          backdropImage,
+          originalTitle, voteAverage, overview, releaseDate);
+      list.add(movie);
+    }else{
+      //posterPath = "https://images.assetsdelivery.com/compings_v2/pavelstasevich/pavelstasevich1811/pavelstasevich181101028.jpg";
+    }
+
   }
   return list;
 }
 
-popularmoviesicon(String textType, String Api, BuildContext context ){
+popularmoviesicon(String textType, String Api, BuildContext context, Axis axis  ){
   return Container(
     height: (MediaQuery.of(context).size.height)/1.5,
     width: (MediaQuery.of(context).size.width),
@@ -99,7 +105,7 @@ popularmoviesicon(String textType, String Api, BuildContext context ){
               List<PopularMovie>? movies = snapshot.data?.cast<PopularMovie>();
 
               return ListView.builder(
-                  scrollDirection: Axis.horizontal,
+                  scrollDirection: axis,
                   padding: const EdgeInsets.all(8),
                   itemCount: movies!.length,
                   itemBuilder: (BuildContext context, int index){
@@ -116,9 +122,10 @@ popularmoviesicon(String textType, String Api, BuildContext context ){
                               );
                               }
                             },
+
                             child: FadeInImage.memoryNetwork(
                               placeholder: kTransparentImage,
-                              image: "https://image.tmdb.org/t/p/w500/" + movies[index].posterPath,
+                              image: movies[index].posterPath,
                               fit: BoxFit.cover,
                               height: 450,
                             ),

@@ -59,7 +59,7 @@ class SearchMovie extends State<Search>{
               ],
             ),
             SizedBox(height: 20),
-            popularmoviesicon("Mas populares", "https://api.themoviedb.org/3/movie/popular?api_key=70242251c4047938bf574587e8bf585e&language"+lenguaje, context),
+            popularmoviesicon("Mas populares", "https://api.themoviedb.org/3/movie/popular?api_key=70242251c4047938bf574587e8bf585e&language"+lenguaje, context,Axis.horizontal),
           ],
         ),
       ),

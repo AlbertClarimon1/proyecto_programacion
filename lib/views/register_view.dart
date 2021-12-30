@@ -47,8 +47,8 @@ class Register extends State<RegisterView>  {
           await FirebaseFirestore.instance.collection("users").doc(user!.uid).set({
             'uid' : user?.uid,
             'email': user?.email,
-            'idiom': lenguaje,
-            'similar_movie': similar_movie,
+            'idiom': "en",
+            'similar_movie': "550",
             'gustos':gustos,
           });
         });
