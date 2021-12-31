@@ -2,6 +2,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:whatchlist/views/countries.dart';
+import 'package:whatchlist/views/gustos.dart';
 import 'package:whatchlist/views/nuevo.dart';
 import 'package:whatchlist/views/popular.dart';
 import 'package:whatchlist/views/watchlist.dart';
@@ -69,7 +70,8 @@ class _AppState extends State<MyApp> {
         '/new' : (context) => const Nuevo(),
         '/popular' : (context) => const Popular(),
         '/watchlist' : (context) => const Watchlist(),
-        '/countries' : (context) => const Countries()
+        '/countries' : (context) => const Countries(),
+        '/preferences' : (context) => const Gustos()
 
       },
       /*home: routes.buildPage('startpage', null),

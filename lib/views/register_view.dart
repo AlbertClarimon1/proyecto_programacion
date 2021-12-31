@@ -50,6 +50,7 @@ class Register extends State<RegisterView>  {
             'idiom': "en",
             'similar_movie': "550",
             'gustos':gustos,
+            'nombregustos':nombreGustos,
           });
         });
       }else{

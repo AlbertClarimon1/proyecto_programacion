@@ -34,6 +34,7 @@ class Login extends State<LoginView>  {
         user = FirebaseAuth.instance.currentUser;
         await FirebaseFirestore.instance.collection("users").doc(user!.uid).get().then((resultado){
           lenguaje = resultado['idiom'];
+          gustos = resultado['gustos'];
           similar_movie = resultado['similar_movie'].toString();
           //gustos = resultado['gustos'];
           //print(lenguaje);
