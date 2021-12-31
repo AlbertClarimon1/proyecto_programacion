@@ -70,29 +70,6 @@ class Login extends State<LoginView>  {
 
   }
 
-
-
-
-  /*@override
-  _TextLabel(String title, double width, TextEditingController controller, bool _obscureText ){
-    return Container(
-      width: (MediaQuery.of(context).size.width)/1.3,
-      height: (MediaQuery.of(context).size.width)/10,
-      child:TextField(
-        controller: controller,
-        decoration: InputDecoration(
-          enabledBorder: OutlineInputBorder(
-            borderSide: BorderSide(color: Colors.black, width: width),
-          ),
-          //labelText: 'User Name',
-          hintText: title,
-
-        ),
-        obscureText: _obscureText,
-      ),
-    );
-  }*/
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -106,7 +83,7 @@ class Login extends State<LoginView>  {
               //mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 Container(
-                  height: (MediaQuery.of(context).size.height+22)/1.1,
+                  height: (MediaQuery.of(context).size.height),
                   width: (MediaQuery.of(context).size.width),
                   child: Stack(
                     //overflow: Overflow.visible,

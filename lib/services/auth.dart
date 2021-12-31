@@ -118,7 +118,7 @@ List<PopularMovie> createPopularMovieList(List data) {
 
 popularmoviesicon(String textType, String Api, BuildContext context, Axis axis  ){
   return Container(
-    height: (MediaQuery.of(context).size.height)/1.5,
+    height: (MediaQuery.of(context).size.height)/1.4,
     width: (MediaQuery.of(context).size.width),
     //child: Expanded(
     child: Column(
