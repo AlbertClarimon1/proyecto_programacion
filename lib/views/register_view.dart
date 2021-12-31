@@ -12,7 +12,6 @@ class RegisterView extends StatefulWidget {
 
   const RegisterView({Key? key}) : super(key: key);
   State<RegisterView> createState() => Register();
-//HomePage createState()=> HomePage();
 }
 
 class Register extends State<RegisterView>  {
@@ -111,24 +110,17 @@ class Register extends State<RegisterView>  {
       backgroundColor: Colors.white,
       body: SafeArea(
         child: Container(
-
-          //alignment: Alignment.topCenter,
           child: ListView(
-            //crossAxisAlignment: CrossAxisAlignment.end,
-            //mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 Container(
                   height: (MediaQuery.of(context).size.height),
                   width: (MediaQuery.of(context).size.width),
                   child: Stack(
-                    //overflow: Overflow.visible,
                     children: [
                       Image.asset(
                         'assets/register.png',
                         width: (MediaQuery.of(context).size.width),
-                        //fit: BoxFit.contain,
                       ),
-                      // SizedBox(height: 0),
                       Positioned(
                         bottom: (MediaQuery.of(context).size.width)-(MediaQuery.of(context).size.height)/2.5,
                         left: (MediaQuery.of(context).size.width)/16,
@@ -167,13 +159,10 @@ class Register extends State<RegisterView>  {
                                   ),
                                   SizedBox(height: 17),
                                   TextFiel(title: "Pon tu email", width: 1.0, controller: nameController, obscureText: false, context: context, color: Colors.black),
-                                  //_TextLabel("Pon tu email", 1.0, nameController),
                                   SizedBox(height: 10),
                                   TextFiel(title: "Pon tu contraseña", width: 1.0, controller: passwordController, obscureText: false, context: context, color: Colors.black),
-                                  // _TextLabel("Pon tu contraseña", 1.0,passwordController ),
                                   SizedBox(height: 10),
                                   TextFiel(title: "Repite tu contraseña", width: 1.0, controller: repitpasswordController, obscureText: false, context: context, color: Colors.black),
-                                  //_TextLabel("Repite tu contraseña", 1.0,repitpasswordController ),
                                   SizedBox(height: 10),
                                   Row(
                                     children: [
@@ -182,7 +171,6 @@ class Register extends State<RegisterView>  {
                                         data: ThemeData(unselectedWidgetColor: colorbox),
                                         child: Checkbox(
                                             value: accept,
-
                                             activeColor: Color.fromRGBO(255, 199, 0, 1),
                                             onChanged: (bool? value){
                                               setState(() {
@@ -198,7 +186,6 @@ class Register extends State<RegisterView>  {
                                         style: TextStyle(
                                           fontSize: 13,
                                         ),
-
                                       ),
                                     ],
                                   ),
@@ -210,7 +197,6 @@ class Register extends State<RegisterView>  {
                                         data: ThemeData(unselectedWidgetColor: Colors.black),
                                         child: Checkbox(
                                             value: age,
-
                                             activeColor: Color.fromRGBO(255, 199, 0, 1),
                                             onChanged: (bool? value){
                                               setState(() {
@@ -225,27 +211,11 @@ class Register extends State<RegisterView>  {
                                         style: TextStyle(
                                           fontSize: 13,
                                         ),
-
                                       ),
                                     ],
                                   ),
                                   SizedBox(height: 10),
                                   SimpleButtom(title: "Continuar", width: 1.3, height: 10, onTap: ()=> signUpWithEmailAndPassword(nameController, passwordController), color: Color.fromRGBO(255, 199, 0 , 1), textSize: 15, borderColor: Colors.black, borderwidth: 0),
-                                  /*Container(
-                                  width: (MediaQuery.of(context).size.width)/1.3,
-                                  height: (MediaQuery.of(context).size.width)/10,
-                                  child:TextField(
-                                    controller: nameController,
-                                    decoration: InputDecoration(
-                                      enabledBorder: OutlineInputBorder(
-                                        borderSide: const BorderSide(color: Colors.black, width: 1.0),
-                                      ),
-                                      //labelText: 'User Name',
-                                      hintText: 'Enter your email',
-                                    ),
-                                  ),
-                                ),*/
-
                                 ],
                               ),
                             ),

@@ -2,10 +2,6 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:whatchlist/views/home.dart';
-import 'package:whatchlist/widget/appBar.dart';
-import 'package:whatchlist/widget/bottom%20bar.dart';
-import 'package:country_icons/country_icons.dart';
-import 'package:flag/flag.dart';
 
 
 class Countries extends StatefulWidget {
@@ -21,10 +17,13 @@ class Country extends State<Countries> {
       'idiom':countries,
     });
     await FirebaseFirestore.instance.collection("users").doc(user!.uid).get().then((resultado){
-      lenguaje = resultado['idiom'];
+      setState(() {
+        lenguaje = resultado['idiom'];
+      });
       similar_movie = resultado['similar_movie'].toString();
     });
   }
+
 
   @override
   Widget build(BuildContext context) {
@@ -46,8 +45,6 @@ class Country extends State<Countries> {
                 color: Colors.white,
               ),
             ),
-            //Image.asset("icons/flags/png/"+lenguaje+".png", package: 'country_icons'),
-            //Image.asset('icons/flags/png/es.png', package: 'country_icons'),
           ],
         ),
         bottom: PreferredSize(
@@ -78,12 +75,9 @@ class Country extends State<Countries> {
                               fontSize: 20,
                               fontWeight: FontWeight.w500,
                             ),
-
-
                           ),
                         ],
                       )
-                      //Text("data"),
                     ]
                 ),
               );

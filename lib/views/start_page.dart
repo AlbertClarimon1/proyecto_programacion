@@ -2,23 +2,18 @@ import 'package:flutter/material.dart';
 import 'package:whatchlist/widget/iconButton.dart';
 
 
-
-
 class FirstScreen extends StatefulWidget {
 
   const FirstScreen({Key? key}) : super(key: key);
   State<FirstScreen> createState() => StartPage();
-  //HomePage createState()=> HomePage();
 }
 
 class StartPage extends State<FirstScreen>{
-
 
   void login(){
     setState(() {
       Navigator.pushNamed(context, '/login');
     });
-
   }
 
   void crearCuenta(){
@@ -30,25 +25,10 @@ class StartPage extends State<FirstScreen>{
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-    /*bottomNavigationBar: BottomAppBar(
-      child: Container(
-        width: 100,
-        child: Text(
-          "Hola",
-          style: TextStyle(
-              fontSize: 10,
-              fontWeight: FontWeight.w500),
-        ),
-      ),
 
-
-
-      ),*/
       backgroundColor: Colors.white,
       body: SafeArea(
         child: Container(
-
-        //alignment: Alignment.topCenter,
           child: Column(
             children: [
               Container(
@@ -60,9 +40,7 @@ class StartPage extends State<FirstScreen>{
                     Image.asset(
                       'assets/Start_Image.png',
                       width: (MediaQuery.of(context).size.width),
-                      //fit: BoxFit.contain,
                     ),
-                    // SizedBox(height: 0),
                     Positioned(
                       bottom: (MediaQuery.of(context).size.height)-(MediaQuery.of(context).size.width)*2.2,
                       left: (MediaQuery.of(context).size.width)/16,

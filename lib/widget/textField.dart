@@ -11,8 +11,6 @@ class TextFiel extends StatelessWidget{
   final BuildContext context;
   final Color color;
 
-  //IconButtom({ required this.title, required this.width,  required this.height, required this.onTap, required this.color, required this.textSize, this.iconData});
-
   TextFiel({required this.title, required this.width, required this.controller, required this.obscureText, required this.context, required this.color });
 
 
@@ -30,11 +28,9 @@ class TextFiel extends StatelessWidget{
           enabledBorder: OutlineInputBorder(
             borderSide: BorderSide(color: color, width: width),
           ),
-          //labelText: 'User Name',
           hintText: title,
         ),
         cursorColor: color,
-
         obscureText: obscureText,
       ),
     );

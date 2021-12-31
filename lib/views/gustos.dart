@@ -1,12 +1,7 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:whatchlist/services/auth.dart';
 import 'package:whatchlist/views/home.dart';
-import 'package:whatchlist/widget/appBar.dart';
-import 'package:whatchlist/widget/bottom%20bar.dart';
-import 'package:country_icons/country_icons.dart';
-import 'package:flag/flag.dart';
 
 
 class Gustos extends StatefulWidget {
@@ -33,8 +28,6 @@ class Likes extends State<Gustos> {
                 color: Colors.white,
               ),
             ),
-            //Image.asset("icons/flags/png/"+lenguaje+".png", package: 'country_icons'),
-            //Image.asset('icons/flags/png/es.png', package: 'country_icons'),
           ],
         ),
         bottom: PreferredSize(
@@ -55,7 +48,6 @@ class Likes extends State<Gustos> {
                   mainAxisAlignment: MainAxisAlignment.start,
                     children: [
                       genresTypes(context),
-                      //Text("data"),
                     ]
                 ),
               );
@@ -64,5 +56,4 @@ class Likes extends State<Gustos> {
       ),
     );
   }
-
 }

@@ -20,24 +20,17 @@ textToApi(TextEditingController movie, BuildContext context) async {
   var httpClient = HttpClient();
   final response = await http.get(Uri.parse(nowPlaying));
   final responseJson = json.decode(response.body);
-  //createDetailList(responseJson);
   var id = responseJson["results"][0]["id"];
   Navigator.push(
     context,
     MaterialPageRoute(
         builder: (_) => MovieDetailsPage(id)),
   );
-  // Print the results.
-  //return movieDetail;
-
 }
 
  createDetailList(data) {
   //List<String> genresList = [];
   //List<ProductionCompanies> productionCompaniesList = [];
-
-
-
   }
 
 class SearchMovie extends State<Search>{
@@ -55,7 +48,6 @@ class SearchMovie extends State<Search>{
                 SizedBox(width: 10),
                 TextFiel(title: "Buscar pelicula", width: 1.0, controller: nameController, obscureText: false, context: context,color: Colors.white),
                 IconButton(onPressed: ()=>  textToApi(nameController, context), icon: Icon(Icons.search), color: Colors.white,),
-                //Tex("Pon tu contraseña", 1.0,passwordController,true),
               ],
             ),
             SizedBox(height: 20),

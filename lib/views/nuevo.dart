@@ -26,21 +26,13 @@ class NuevoPage extends State<Nuevo>{
                 child: Column(
                     children: [
                       popularmoviesicon("Estrenos", "https://api.themoviedb.org/3/discover/movie?sort_by=release_date.desc&api_key=70242251c4047938bf574587e8bf585e&page=100", context,Axis.vertical),
-                     // popularmoviesicon("Novedades", "", context),
-                      //Text("data"),
-                      //IconButton(onPressed: add, icon:  Icon(Icons.menu)),
+
                     ]
                 ),
               );
             }
         ),
       ),
-
     );
   }
-
-
-
-
-
 }

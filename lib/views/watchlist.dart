@@ -1,7 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:whatchlist/widget/appBar.dart';
-import 'package:whatchlist/widget/bottom%20bar.dart';
 
 class Watchlist extends StatefulWidget {
 
@@ -39,7 +37,6 @@ class WatchlistPage extends State<Watchlist> {
               return Container(
                 child: Column(
                     children: [
-                      //Text("data"),
                       Row(
                         children: [
                           SizedBox(height: 150),

@@ -28,8 +28,6 @@ class Story extends StatelessWidget {
             textTheme.bodyText2!.copyWith(color: Colors.black45, fontSize: 16.0),
           ),
         ),
-        // No expand-collapse in this tutorial, we just slap the "more"
-        // button below the text like in the mockup.
         Padding(
           padding: const EdgeInsets.only(left: 16.0, right: 16.0),
           child: Row(

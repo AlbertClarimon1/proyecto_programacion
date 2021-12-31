@@ -93,7 +93,8 @@ List<PopularMovie> createPopularMovieList(List data) {
     var id = data[i]["id"];
     String title = data[i]["title"];
     String posterPath = data[i]["poster_path"];
-    if(posterPath != null && data[i]["backdrop_path"]!=null){
+
+    if(posterPath != null && data[i]["backdrop_path"]!= null){
       posterPath = "https://image.tmdb.org/t/p/w500/" + posterPath;
       String backdropImage = data[i]["backdrop_path"];
       String originalTitle = data[i]["original_title"];
@@ -108,10 +109,7 @@ List<PopularMovie> createPopularMovieList(List data) {
           backdropImage,
           originalTitle, voteAverage, overview, releaseDate);
       list.add(movie);
-    }else{
-      //posterPath = "https://images.assetsdelivery.com/compings_v2/pavelstasevich/pavelstasevich1811/pavelstasevich181101028.jpg";
     }
-
   }
   return list;
 }
@@ -120,7 +118,6 @@ popularmoviesicon(String textType, String Api, BuildContext context, Axis axis  
   return Container(
     height: (MediaQuery.of(context).size.height)/1.4,
     width: (MediaQuery.of(context).size.width),
-    //child: Expanded(
     child: Column(
       children: [
         Row(
@@ -136,8 +133,6 @@ popularmoviesicon(String textType, String Api, BuildContext context, Axis axis  
         ),
         SizedBox(height: 20),
         Expanded(
-          //child: Column(
-          //children: [
           child: FutureBuilder<List<PopularMovie>>(
             future: getPopularMovies(Api),
             builder: (BuildContext context, AsyncSnapshot<List> snapshot){
@@ -145,7 +140,6 @@ popularmoviesicon(String textType, String Api, BuildContext context, Axis axis  
                 return Center(
                   child: CircularProgressIndicator(),
                 );
-              // return
               List<PopularMovie>? movies = snapshot.data?.cast<PopularMovie>();
 
               return ListView.builder(
@@ -208,7 +202,6 @@ genresTypes(BuildContext context){
       List<generos>? movies = snapshot.data?.cast<generos>();
 
       return ListView.builder(
-        //scrollDirection: Axis.vertical,
           padding: const EdgeInsets.all(0),
           itemCount: movies!.length,
           itemBuilder: (BuildContext context, int index){
@@ -247,17 +240,7 @@ genresTypes(BuildContext context){
                           nombreGustos = resultado['nombreGustos'];
                           similar_movie = resultado['similar_movie'].toString();
                         });
-
-
-                        //print(nombreGustos[index]);
-                        /* Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (_) => MovieDetailsPage(movies[index].id )),
-                        );*/
                       }
-
-                      //movies[index].color = movies[index].press?Colors.amber:Colors.amber;
                     },
 
                     child: Text(
@@ -281,44 +264,6 @@ genresTypes(BuildContext context){
     ),
   );
 }
-
-/*List<Widget> createPopularMovieCardItem(
-    List<PopularMovie> movies, BuildContext context) {
-  // Children list for the list.
-  List<Widget> listElementWidgetList = <Widget>[];
-  if (movies != null) {
-    var lengthOfList = movies.length;
-    for (int i = 0; i < lengthOfList; i++) {
-      PopularMovie movie = movies[i];
-      // Image URL
-      var imageURL = "https://image.tmdb.org/t/p/w500/" + movie.posterPath;
-      // List item created with an image of the poster
-      var listItem = GridTile(
-          footer: GridTileBar(
-            backgroundColor: Colors.black45,
-            title: Text(movie.title),
-          ),
-          child: GestureDetector(
-            onTap: () {
-              if (movie.id > 0) {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (_) => MovieDetailsPage(movie.id)),
-                );
-              }
-            },
-            child: FadeInImage.memoryNetwork(
-              placeholder: kTransparentImage,
-              image: imageURL,
-              fit: BoxFit.cover,
-            ),
-          ));
-      listElementWidgetList.add(listItem);
-    }
-  }
-  return listElementWidgetList;
-}*/
 
 
 

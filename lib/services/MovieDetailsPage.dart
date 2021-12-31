@@ -11,7 +11,7 @@ import 'package:whatchlist/views/home.dart';
 import 'package:http/http.dart' as http;
 
 
-  // Method to get now playing movies from the backend
+// Method to get now playing movies from the backend
 
 class MovieDetailsPage extends StatelessWidget {
   MovieDetailsPage(this.id);
@@ -50,7 +50,6 @@ class MovieDetailsPage extends StatelessWidget {
                           placeholder: kTransparentImage,
                           image: "https://image.tmdb.org/t/p/w500/" + movies!.backdropPath,
                           fit: BoxFit.cover,
-                           //width: MediaQuery.of(context).size.width,
                         ),
                         SizedBox(height: 15),
                         Row(
@@ -66,8 +65,6 @@ class MovieDetailsPage extends StatelessWidget {
                                 fontWeight: FontWeight.w500,
                               ),
                             ),)
-
-                            //SizedBox(width: 15),
                           ],
                         ),
                         SizedBox(height: 15),
@@ -82,10 +79,8 @@ class MovieDetailsPage extends StatelessWidget {
                         SizedBox(height: 15),
                       ],
                     ),
-
                   );
                 }
-
             );
           }
         },
@@ -119,7 +114,6 @@ class MovieDetailsPage extends StatelessWidget {
     var id = data["id"];
     var adult = data["adult"];
     var title = data["title"];
-    //last_movie = title;
     var date = data["release_date"];
     var productionCompany = data["production_companies"];
     for (int i = 0; i < productionCompany.length; i++) {

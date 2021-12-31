@@ -20,11 +20,8 @@ appBar2(BuildContext context){
             ],
           ),
         )
-        //IconButtom(title: "", width: 50, height: 100, onTap:()=>Navigator.pushNamed(context, '/search'), color: color, textSize: textSize)
       ],
-
     ),
     automaticallyImplyLeading: false,
   );
-
 }

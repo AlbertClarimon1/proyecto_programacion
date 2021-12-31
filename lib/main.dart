@@ -11,10 +11,8 @@ import 'package:whatchlist/views/start_page.dart';
 import 'package:whatchlist/views/login_view.dart';
 import 'package:whatchlist/views/home.dart';
 import 'package:whatchlist/views/register_view.dart';
-import 'package:firebase_analytics/firebase_analytics.dart';
 import 'firebase_options.dart';
 import 'package:whatchlist/services/auth.dart';
-import 'package:whatchlist/views/search.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -27,7 +25,6 @@ class MyApp extends StatefulWidget {
 
   const MyApp({Key key, this.post}) : super(key: key);
 
-  // This widget is the root of your application.
   @override
   _AppState createState() => _AppState();
 }
@@ -39,7 +36,6 @@ class _AppState extends State<MyApp> {
   ThemeData.light().copyWith(accentColor: Colors.transparent);
   final ThemeData _darkTheme =
   ThemeData.dark().copyWith(accentColor: Colors.transparent);
-  //final AbstractRoutes routes = Routes.routes;
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -47,18 +43,6 @@ class _AppState extends State<MyApp> {
       debugShowCheckedModeBanner: false,
       theme: _lightTheme,
       darkTheme: _darkTheme,
-      /*localizationsDelegates: [
-        I18n.delegate,
-        GlobalMaterialLocalizations.delegate,
-        GlobalWidgetsLocalizations.delegate,
-        GlobalCupertinoLocalizations.delegate,
-      ],*/
-     /* supportedLocales: I18n.delegate.supportedLocales,
-      localeResolutionCallback:
-      I18n.delegate.resolution(fallback: new Locale("en", "US")),
-      navigatorObservers: [
-        FirebaseAnalyticsObserver(analytics: analytics),
-      ],*/
       initialRoute: '/',
       routes: {
 
@@ -74,12 +58,6 @@ class _AppState extends State<MyApp> {
         '/preferences' : (context) => const Gustos()
 
       },
-      /*home: routes.buildPage('startpage', null),
-      onGenerateRoute: (RouteSettings settings) {
-        return MaterialPageRoute<Object>(builder: (BuildContext context) {
-          return routes.buildPage(settings.name, settings.arguments);
-        });
-      },*/
     );
   }
 }
