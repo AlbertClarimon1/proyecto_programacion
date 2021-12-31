@@ -14,6 +14,7 @@ String lenguaje = "";
 String similar_movie = "";
 List gustos = [];
 User? user;
+List countries = ["es", "en", "fr", "de", "it"];
 
 
 class Home extends StatefulWidget {

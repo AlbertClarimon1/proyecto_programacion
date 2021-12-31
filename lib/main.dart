@@ -1,6 +1,7 @@
 // @dart=2.9
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:whatchlist/views/countries.dart';
 import 'package:whatchlist/views/nuevo.dart';
 import 'package:whatchlist/views/popular.dart';
 import 'package:whatchlist/views/watchlist.dart';
@@ -67,7 +68,8 @@ class _AppState extends State<MyApp> {
         '/search': (context) => const Search(),
         '/new' : (context) => const Nuevo(),
         '/popular' : (context) => const Popular(),
-        '/watchlist' : (context) => const Watchlist()
+        '/watchlist' : (context) => const Watchlist(),
+        '/countries' : (context) => const Countries()
 
       },
       /*home: routes.buildPage('startpage', null),
