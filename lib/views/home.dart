@@ -16,6 +16,7 @@ List gustos = [];
 List nombreGustos = [];
 User? user;
 List countries = ["es", "en", "fr", "de", "it"];
+Color colorGusto = Colors.white;
 
 
 
@@ -91,7 +92,7 @@ class HomePage extends State<Home>{
   List <Widget> prueba(){
 
     List<Widget> listElementWidgetList = <Widget>[];
-    for(int i=0; i<gustos.length;i++){
+    for(int i=0; i<nombreGustos.length;i++){
       var listad = popularmoviesicon("Porque te gusta "+ nombreGustos[i], "https://api.themoviedb.org/3/discover/movie?api_key=70242251c4047938bf574587e8bf585e&with_genres="+gustos[i].toString(), context, Axis.horizontal);
       listElementWidgetList.add(listad);
     }

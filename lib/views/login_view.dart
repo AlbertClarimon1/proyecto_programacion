@@ -36,7 +36,7 @@ class Login extends State<LoginView>  {
           lenguaje = resultado['idiom'];
           gustos = resultado['gustos'];
           similar_movie = resultado['similar_movie'].toString();
-          //gustos = resultado['gustos'];
+          nombreGustos = resultado['nombreGustos'];
           //print(lenguaje);
         });
         Navigator.pushNamed(context, '/home');

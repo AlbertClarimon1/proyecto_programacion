@@ -28,8 +28,9 @@ class generos{
   var id;
   String name;
   bool press;
+  Color color;
 
-  generos(this.id, this.name, this.press);
+  generos(this.id, this.name, this.press, this.color);
 }
 
 Future <List<generos>> getGenero() async {
@@ -56,10 +57,11 @@ List<generos> createGenero(List data) {
     var id = data[i]["id"];
     String name = data[i]["name"];
     bool press = false;
+    Color color = Colors.white;
 
     generos movie = generos(
         id,
-        name, press);
+        name, press, color);
     list.add(movie);
 
   }
@@ -221,6 +223,7 @@ genresTypes(BuildContext context){
                           nombreGustos.add(movies[index].name);
                           gustos.add(movies[index].id);
                           movies[index].press = true;
+                          movies[index].color = Colors.amber;
                         }else{
                           for(int i=0; i<gustos.length;i++){
                             print(nombreGustos[i]);
@@ -231,17 +234,20 @@ genresTypes(BuildContext context){
                             }
 
                           }
+                          movies[index].color = Colors.white;
                           movies[index].press = false;
                         }
                         await FirebaseFirestore.instance.collection("users").doc(user!.uid).update({
                           'gustos':gustos,
+                          'nombreGustos':nombreGustos,
                         });
                         await FirebaseFirestore.instance.collection("users").doc(user!.uid).get().then((resultado){
                           lenguaje = resultado['idiom'];
                           gustos = resultado['gustos'];
-                          //nombreGustos = resultado['nombregustos'];
+                          nombreGustos = resultado['nombreGustos'];
                           similar_movie = resultado['similar_movie'].toString();
                         });
+
 
                         //print(nombreGustos[index]);
                         /* Navigator.push(
@@ -250,11 +256,14 @@ genresTypes(BuildContext context){
                               builder: (_) => MovieDetailsPage(movies[index].id )),
                         );*/
                       }
+
+                      //movies[index].color = movies[index].press?Colors.amber:Colors.amber;
                     },
+
                     child: Text(
                       movies[index].name,
                       style: TextStyle(
-                        color: Colors.white,
+                        color: movies[index].color ,
                         fontWeight: FontWeight.w500,
                         fontSize: 20,
                       ),
