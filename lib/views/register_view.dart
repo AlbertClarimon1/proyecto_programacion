@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:whatchlist/services/auth.dart';
 import 'package:whatchlist/views/home.dart';
+import 'package:whatchlist/widget/botonTexto.dart';
 import 'package:whatchlist/widget/simpleButton.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/services.dart';
@@ -99,6 +100,13 @@ class Register extends State<RegisterView>  {
   void google(){
     setState(() {
       // Navigator.pushNamed(context, '/');
+    });
+
+  }
+
+  void login(){
+    setState(() {
+       Navigator.pushNamed(context, '/login');
     });
 
   }
@@ -216,6 +224,7 @@ class Register extends State<RegisterView>  {
                                   ),
                                   SizedBox(height: 10),
                                   SimpleButtom(title: "Continuar", width: 1.3, height: 10, onTap: ()=> signUpWithEmailAndPassword(nameController, passwordController), color: Color.fromRGBO(255, 199, 0 , 1), textSize: 15, borderColor: Colors.black, borderwidth: 0),
+                                  botonTexto(title: "¿Ya tienes cuenta? Inicia sesión", onTap: login)
                                 ],
                               ),
                             ),
